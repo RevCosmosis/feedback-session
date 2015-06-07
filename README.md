@@ -4,9 +4,13 @@ Sourcemod plugin for TF2 that gives everyone godmode, noclip, and disables the g
 An outline for what this sourcemod will hopefully do when it is complete:
 
 -When turned on, things will not activate until the round is over. There will be a command to force it on in the middle of the round as well.
+
 -Once it activates, everyone gets godmode and noclip and the round time is disabled (optional). Anyone who joins the game or respawns will be automatically godded and noclipped.
+
 -This state will last indefinitely.
+
 -Deactivating it will set everything back to normal.
+
 
 So, as an actual outline of functions:
 
