@@ -30,7 +30,7 @@ public Action:Fs_On () {
 
 public Action:Fs_Off () {
 	for (new i = 1; i <= GetClientCount(true); i++) {
-		EnableClient(i);
+		DisableClient(i);
 	}
 
 	PrintChatAll("Feedback session disabled.");
