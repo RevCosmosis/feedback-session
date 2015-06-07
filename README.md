@@ -13,29 +13,37 @@ So, as an actual outline of functions:
 ---
 
 !fs on next
+
 	Feedback session will begin on the next round.
 
 !fs on soft
+
 	Feedback session begins right now without resetting anything.
 	
 !fs on hard
+
 	Feedback session will begin right now by resetting the round.
 
 !fs off soft
+
 	Feedback session ends right now without resetting anything.
 	
 !fs off hard
+
 	Feedback session ends right now by resetting the round.
 
 ----	
 
 !fs timer on/off
+
 	The game timer will/will not continue during the feedback session.
 	
 !fs win on/off
+
 	Teams can/cannot win during the feedback session.
 
 !fs end on/off
+
 	Feedback session will/will not begin when the map timer is over.
 	
 ---
