@@ -1,18 +1,11 @@
 # feedback-session
-Sourcemod plugin for TF2 that gives everyone godmode, noclip, and disables the game timer. This would be used to let everyone have a discussion about the map over chat (text, voice, whatever).
+WHAT THIS MOD DOES RIGHT NOW:
 
-An outline for what this sourcemod will hopefully do when it is complete:
+Allows admins to toggle a "feedback session" mode, which gives everyone noclip, godmode, and will also do the same for anyone who joins the game during the session.
 
--When turned on, things will not activate until the round is over. There will be a command to force it on in the middle of the round as well.
+WHAT THIS MOD WILL HEOPFULLY DO:
 
--Once it activates, everyone gets godmode and noclip and the round time is disabled (optional). Anyone who joins the game or respawns will be automatically godded and noclipped.
-
--This state will last indefinitely.
-
--Deactivating it will set everything back to normal.
-
-
-So, as an actual outline of functions:
+Allow admins to toggle a "feedback session" mode as mentioned before, but with additional options, like how the session starts, how it ends, and how the map functions during a session. A planned list of functions:
 
 ---
 
