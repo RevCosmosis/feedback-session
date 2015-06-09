@@ -8,6 +8,8 @@ public Plugin:myinfo = {
 	url = "https://github.com/RevCosmosis/feedback-session"
 };
 
+ConVar g_cvarEnabled;
+
 public OnPluginStart () {
 	RegAdminCmd("sm_fs_on", Fs_On, ADMFLAG_CHANGEMAP);
 	RegAdminCmd("sm_fs_off", Fs_Off, ADMFLAG_CHANGEMAP);
@@ -15,36 +17,37 @@ public OnPluginStart () {
 	HookEvent("player_spawn", ClientSpawn);
 	HookEvent("player_class", ClientSpawn);
 	
-	sm_fs_enabled = CreateConVar("sm_fs_enabled", "0", "Is a feedback session enabled?");
+	g_cvarEnabled = CreateConVar("sm_fs_enabled", "0", "Is a feedback session enabled?");
 }
 
-public Action:Fs_On () {
+public Action:Fs_On (int client, int args) {
 	for (new i = 1; i <= GetClientCount(true); i++) {
 		EnableClient(i);
 	}
-
-	PrintChatAll("Feedback session enabled.");
+	g_cvarEnabled.BoolValue = true;
+	PrintToChatAll("Feedback session enabled.");
 
 	return Plugin_Handled;
 }
 
-public Action:Fs_Off () {
+public Action:Fs_Off (int client, int args) {
 	for (new i = 1; i <= GetClientCount(true); i++) {
 		DisableClient(i);
 	}
-
-	PrintChatAll("Feedback session disabled.");
+	g_cvarEnabled.BoolValue = false;
+	PrintToChatAll("Feedback session disabled.");
 
 	return Plugin_Handled;
 }
 
-ClientSpawn (Handle:event, const String:name[], bool:dontBroadcast) {
-	if (GetConVarInt(sm_fs_enabled)) {
+public Action:ClientSpawn (Handle:event, const String:name[], bool:dontBroadcast) {
+	if (g_cvarEnabled.BoolValue) {
 		new id = GetEventInt(event, "userid");
 		new client = GetClientOfUserId(id);
 
 		EnableClient(client);
 	}
+	return Plugin_Continue;
 }
 
 EnableClient (client) {
