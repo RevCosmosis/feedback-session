@@ -21,8 +21,10 @@ public OnPluginStart () {
 }
 
 public Action:Fs_On (int client, int args) {
-	for (new i = 1; i <= GetClientCount(true); i++) {
-		EnableClient(i);
+	for(new client = 1; client <= MaxClients; client++)
+	{
+		if (IsClientInGame(client) && !IsFakeClient(client))
+			EnableClient();
 	}
 	g_cvarEnabled.BoolValue = true;
 	PrintToChatAll("Feedback session enabled.");
@@ -31,8 +33,10 @@ public Action:Fs_On (int client, int args) {
 }
 
 public Action:Fs_Off (int client, int args) {
-	for (new i = 1; i <= GetClientCount(true); i++) {
-		DisableClient(i);
+	for(new client = 1; client <= MaxClients; client++)
+	{
+		if (IsClientInGame(client) && !IsFakeClient(client))
+			DisableClient();
 	}
 	g_cvarEnabled.BoolValue = false;
 	PrintToChatAll("Feedback session disabled.");
@@ -44,8 +48,8 @@ public Action:ClientSpawn (Handle:event, const String:name[], bool:dontBroadcast
 	if (g_cvarEnabled.BoolValue) {
 		new id = GetEventInt(event, "userid");
 		new client = GetClientOfUserId(id);
-
-		EnableClient(client);
+		if (IsClientInGame(client) && !IsFakeClient(client))
+			EnableClient(client);
 	}
 	return Plugin_Continue;
 }
