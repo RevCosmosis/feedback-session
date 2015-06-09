@@ -20,11 +20,11 @@ public OnPluginStart () {
 	g_cvarEnabled = CreateConVar("sm_fs_enabled", "0", "Is a feedback session enabled?");
 }
 
-public Action:Fs_On (int client, int args) {
+public Action:Fs_On (int executingClient, int args) {
 	for(new client = 1; client <= MaxClients; client++)
 	{
 		if (IsClientInGame(client) && !IsFakeClient(client))
-			EnableClient();
+			EnableClient(client);
 	}
 	g_cvarEnabled.BoolValue = true;
 	PrintToChatAll("Feedback session enabled.");
@@ -32,11 +32,11 @@ public Action:Fs_On (int client, int args) {
 	return Plugin_Handled;
 }
 
-public Action:Fs_Off (int client, int args) {
+public Action:Fs_Off (int executingClient, int args) {
 	for(new client = 1; client <= MaxClients; client++)
 	{
 		if (IsClientInGame(client) && !IsFakeClient(client))
-			DisableClient();
+			DisableClient(client);
 	}
 	g_cvarEnabled.BoolValue = false;
 	PrintToChatAll("Feedback session disabled.");
